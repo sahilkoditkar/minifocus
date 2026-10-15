@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>05 Menu</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  iframe { position: absolute; inset: 0; width: 412px; height: 915px; border: 0; }
+  .dim { position: absolute; inset: 0; background: rgba(12,6,30,.18); z-index: 40; }
+  .menu { position: absolute; top: 84px; right: 10px; width: 268px; background: #fff; border-radius: 20px; z-index: 45; padding: 8px 0;
+          box-shadow: 0 24px 50px -10px rgba(20, 8, 60, .45), 0 4px 14px rgba(20,8,60,.14); }
+  .iconrow { display: flex; justify-content: space-between; padding: 2px 14px 8px; }
+  .iconrow span { width: 52px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+  .iconrow span.dis { color: #C9C5D6; }
+  .iconrow span.act { background: var(--iris-soft); color: #5B3FE6; }
+  .sep { height: 1px; background: var(--line); margin: 4px 0; }
+  .item { height: 50px; display: flex; align-items: center; gap: 16px; padding: 0 20px; font-size: 15.5px; color: var(--ink); letter-spacing: -.1px; }
+  .item .icw { color: var(--ink-2); }
+  .item .grow { flex: 1; }
+  .item .chk { width: 20px; height: 20px; border-radius: 6px; border: 2px solid #A9A4BC; }
+  .item .pill { font-size: 11px; font-weight: 700; color: #5B3FE6; background: var(--iris-soft); padding: 3px 8px; border-radius: 8px; letter-spacing: .2px; }
+</style></head>
+<body><div class="screen">
+  <iframe src="03-browsing.html"></iframe>
+  <div class="dim"></div>
+  <div class="menu">
+    <div class="iconrow">
+      <span><i data-i="back" data-s="22" data-w="2"></i></span>
+      <span class="dis"><i data-i="fwd" data-s="22" data-w="2"></i></span>
+      <span><i data-i="reload" data-s="22" data-w="2"></i></span>
+      <span><i data-i="bookmark" data-s="21" data-w="2"></i></span>
+    </div>
+    <div class="sep"></div>
+    <div class="item"><i data-i="share" data-s="21"></i><span class="grow">Share</span></div>
+    <div class="item"><i data-i="openin" data-s="21"></i><span class="grow">Open in…</span></div>
+    <div class="item"><i data-i="desktop" data-s="21"></i><span class="grow">Request desktop site</span><span class="chk"></span></div>
+    <div class="item"><i data-i="homeadd" data-s="21"></i><span class="grow">Add to home screen</span></div>
+    <div class="item"><i data-i="find" data-s="21"></i><span class="grow">Find in page</span></div>
+    <div class="sep"></div>
+    <div class="item"><i data-i="car" data-s="22" style="color:#5B3FE6"></i><span class="grow">Car mode</span><span class="pill">NEW</span></div>
+    <div class="item"><i data-i="gear" data-s="21"></i><span class="grow">Settings</span></div>
+  </div>
+  <div class="nav dark"></div>
+</div></body></html>

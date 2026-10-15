@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>04 Shield panel</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  iframe { position: absolute; inset: 0; width: 412px; height: 915px; border: 0; }
+  .site { display: flex; align-items: center; gap: 14px; padding: 10px 22px 16px; }
+  .fav { width: 44px; height: 44px; border-radius: 12px; background: #0F4C5C; color: #fff; font-family: Georgia, serif; font-weight: 700; font-size: 22px; display: flex; align-items: center; justify-content: center; }
+  .site .t1 { font-size: 17px; font-weight: 600; letter-spacing: -.2px; }
+  .site .t2 { font-size: 13px; color: #138A62; display: flex; align-items: center; gap: 5px; margin-top: 3px; font-weight: 500; }
+  .site .x { margin-left: auto; width: 36px; height: 36px; border-radius: 18px; background: var(--bg-2); color: var(--ink-2); display: flex; align-items: center; justify-content: center; }
+
+  .stats { margin: 0 16px; background: linear-gradient(150deg, #F3EFFF 0%, #FBF3FA 100%); border-radius: 22px; padding: 18px 18px 16px; }
+  .big { display: flex; align-items: center; gap: 14px; }
+  .num { font-size: 48px; font-weight: 800; letter-spacing: -2px; line-height: 50px;
+         background: linear-gradient(120deg, #5B3FE6, #E2489E); -webkit-background-clip: text; color: transparent; }
+  .lbl { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 20px; }
+  .lbl small { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-3); margin-top: 2px; }
+  .bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; gap: 3px; margin: 16px 0 14px; }
+  .bar span { border-radius: 4px; }
+  .cats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cat { background: #fff; border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 0 rgba(23,19,42,.04); }
+  .cat .ci { width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .cat .cn { font-size: 13.5px; color: var(--ink-2); font-weight: 500; flex: 1; }
+  .cat .cv { font-size: 17px; font-weight: 700; color: var(--ink); }
+
+  .opts { margin-top: 10px; }
+  .opt { display: flex; align-items: center; gap: 16px; padding: 0 22px; height: 66px; }
+  .opt .oi { width: 40px; height: 40px; border-radius: 12px; background: var(--bg-2); color: var(--ink-2); display: flex; align-items: center; justify-content: center; }
+  .opt .ot { flex: 1; }
+  .opt .ot b { display: block; font-size: 15.5px; font-weight: 600; letter-spacing: -.1px; }
+  .opt .ot span { font-size: 13px; color: var(--ink-3); }
+  .divider { height: 1px; background: var(--line); margin: 6px 22px; }
+  .info { display: flex; align-items: center; gap: 16px; padding: 0 22px; height: 56px; color: var(--ink-2); font-size: 14.5px; }
+  .info .grow { flex: 1; }
+  .info .grow small { display: block; font-size: 12.5px; color: var(--ink-3); }
+</style></head>
+<body><div class="screen">
+  <iframe src="03-browsing.html"></iframe>
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <div class="site">
+      <div class="fav">N</div>
+      <div><div class="t1">northline.news</div><div class="t2"><i data-i="lock" data-s="14" data-w="2.2"></i>Connection is secure</div></div>
+      <div class="x"><i data-i="x" data-s="18" data-w="2"></i></div>
+    </div>
+
+    <div class="stats">
+      <div class="big"><span class="num">23</span><span class="lbl">Trackers &amp; ads blocked<small>on this page · 1,284 this week</small></span></div>
+      <div class="bar"><span style="flex:11;background:#FF5C8A"></span><span style="flex:7;background:#7C5CFF"></span><span style="flex:3;background:#2FA8FF"></span><span style="flex:2;background:#FFB020"></span></div>
+      <div class="cats">
+        <div class="cat"><span class="ci" style="background:#FFE6EE;color:#E8396E"><i data-i="ads" data-s="18" data-w="2"></i></span><span class="cn">Ads</span><span class="cv">11</span></div>
+        <div class="cat"><span class="ci" style="background:#ECE7FF;color:#6A48F5"><i data-i="chart" data-s="18" data-w="2"></i></span><span class="cn">Analytics</span><span class="cv">7</span></div>
+        <div class="cat"><span class="ci" style="background:#E2F3FF;color:#1E8EE6"><i data-i="users" data-s="18" data-w="2"></i></span><span class="cn">Social</span><span class="cv">3</span></div>
+        <div class="cat"><span class="ci" style="background:#FFF3DA;color:#D98900"><i data-i="box" data-s="18" data-w="2"></i></span><span class="cn">Content</span><span class="cv">2</span></div>
+      </div>
+    </div>
+
+    <div class="opts">
+      <div class="opt"><span class="oi" style="background:#EEE9FF;color:#5B3FE6"><i data-i="shieldcheck" data-s="21" data-w="2"></i></span><span class="ot"><b>Block ads &amp; trackers</b><span>On for this site</span></span><span class="switch on"></span></div>
+      <div class="opt"><span class="oi"><i data-i="cookie" data-s="21" data-w="1.9"></i></span><span class="ot"><b>Block cookies</b><span>Third-party cookies only</span></span><span class="switch on"></span></div>
+      <div class="opt"><span class="oi"><i data-i="code" data-s="21" data-w="2"></i></span><span class="ot"><b>JavaScript</b><span>Allowed on this site</span></span><span class="switch on"></span></div>
+    </div>
+    <div class="divider"></div>
+    <div class="info"><span style="width:40px;display:flex;justify-content:center"><i data-i="info" data-s="21"></i></span><span class="grow">Site info &amp; permissions<small>Certificate valid · No permissions granted</small></span><i data-i="chevr" data-s="20"></i></div>
+  </div>
+  <div class="nav dark"></div>
+</div></body></html>

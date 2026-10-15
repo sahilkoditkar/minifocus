@@ -1,0 +1,74 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>02 Typing</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  .top { position: absolute; top: 48px; left: 16px; right: 16px; }
+  .urlfield.active { box-shadow: 0 0 0 3px rgba(255,138,176,.55), 0 18px 40px -12px rgba(10,0,40,.55); color: var(--ink); }
+  .typed { flex: 1; font-size: 17px; color: var(--ink); letter-spacing: -.1px; display: flex; align-items: center; }
+  .typed .auto { background: #D5C8FF; color: var(--ink); border-radius: 3px; padding: 2px 1px 2px 0; }
+  .caret { width: 2px; height: 22px; background: var(--iris); margin-left: 1px; border-radius: 1px; }
+  .clear { width: 28px; height: 28px; border-radius: 14px; background: #ECE9F5; color: #6A6585; display: flex; align-items: center; justify-content: center; }
+
+  .sugg { position: absolute; top: 126px; left: 0; right: 0; }
+  .row { height: 56px; display: flex; align-items: center; gap: 18px; padding: 0 22px 0 26px; color: #fff; font-size: 16.5px; letter-spacing: -.1px; }
+  .row .ico { color: rgba(255,255,255,.6); }
+  .row .txt { flex: 1; }
+  .row .txt b { font-weight: 600; }
+  .row .txt span { color: rgba(255,255,255,.62); }
+  .row .fillbtn { color: rgba(255,255,255,.55); }
+  .row.primary { background: rgba(255,255,255,.1); margin: 0 12px 6px; border-radius: 16px; padding: 0 14px; }
+  .row.primary .ico { color: #FF9CBE; }
+  .label { color: rgba(255,255,255,.5); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 14px 26px 4px; }
+  .site { font-style: normal; font-size: 11px; font-weight: 600; color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.3); border-radius: 6px; padding: 2px 6px; margin-left: 8px; vertical-align: 2px; }
+  .engine { margin-left: auto; font-size: 12px; color: rgba(255,255,255,.55); }
+
+  .kb { position: absolute; left: 0; right: 0; bottom: 0; height: 318px; background: #1D1A26; padding-top: 0; }
+  .strip { height: 46px; display: flex; align-items: center; color: #E9E6F2; font-size: 16px; }
+  .strip div { flex: 1; text-align: center; position: relative; }
+  .strip div + div::before { content: ''; position: absolute; left: 0; top: 2px; bottom: 2px; width: 1px; background: #3A3646; }
+  .strip .mid { font-weight: 600; }
+  .krow { display: flex; gap: 6px; padding: 0 5px; margin-bottom: 10px; justify-content: center; }
+  .k { height: 46px; flex: 0 0 34.6px; border-radius: 7px; background: #3B3747; color: #F2F0F7; display: flex; align-items: center; justify-content: center; font-size: 21px; font-weight: 400; }
+  .k.sp { background: #2C2936; font-size: 15px; }
+  .k.w { flex: 0 0 55px; }
+  .k.space { flex: 1 1 auto; }
+  .k.go { flex: 0 0 64px; background: #B9A8FF; color: #1D1A26; border-radius: 22px; }
+  .kb .nav { height: 28px; }
+</style></head>
+<body><div class="screen gradient">
+  <div class="sb"></div>
+
+  <div class="top">
+    <div class="urlfield active">
+      <i data-i="search" data-s="22" style="color:#7C5CFF"></i>
+      <span class="typed">weather pu<span class="auto">ne</span><span class="caret"></span></span>
+      <span class="clear"><i data-i="x" data-s="16" data-w="2.2"></i></span>
+    </div>
+  </div>
+
+  <div class="sugg">
+    <div class="row primary">
+      <i class="ico" data-i="search" data-s="22"></i>
+      <span class="txt">Search for <b>“weather pu”</b></span>
+      <span class="engine">DuckDuckGo</span>
+    </div>
+    <div class="row">
+      <i class="ico" data-i="globe" data-s="22"></i>
+      <span class="txt"><b>weatherpune</b><span>.in</span> <em class="site">Site</em></span>
+      <i class="fillbtn" data-i="fill" data-s="20"></i>
+    </div>
+    <div class="row"><i class="ico" data-i="search" data-s="22"></i><span class="txt">weather pu<b>ne</b></span><i class="fillbtn" data-i="fill" data-s="20"></i></div>
+    <div class="row"><i class="ico" data-i="search" data-s="22"></i><span class="txt">weather pu<b>ne tomorrow</b></span><i class="fillbtn" data-i="fill" data-s="20"></i></div>
+    <div class="row"><i class="ico" data-i="search" data-s="22"></i><span class="txt">weather pu<b>ne hourly</b></span><i class="fillbtn" data-i="fill" data-s="20"></i></div>
+    <div class="row"><i class="ico" data-i="search" data-s="22"></i><span class="txt">weather pu<b>ne monsoon 2026</b></span><i class="fillbtn" data-i="fill" data-s="20"></i></div>
+  </div>
+
+  <div class="kb">
+    <div class="strip"><div>pune</div><div class="mid">puné</div><div>punctual</div></div>
+    <div class="krow"><span class="k">q</span><span class="k">w</span><span class="k">e</span><span class="k">r</span><span class="k">t</span><span class="k">y</span><span class="k">u</span><span class="k">i</span><span class="k">o</span><span class="k">p</span></div>
+    <div class="krow" style="padding:0 22px"><span class="k">a</span><span class="k">s</span><span class="k">d</span><span class="k">f</span><span class="k">g</span><span class="k">h</span><span class="k">j</span><span class="k">k</span><span class="k">l</span></div>
+    <div class="krow"><span class="k sp w"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 4 4.5 12H9v7h6v-7h4.5z"/></svg></span><span class="k">z</span><span class="k">x</span><span class="k">c</span><span class="k">v</span><span class="k">b</span><span class="k">n</span><span class="k">m</span><span class="k sp w"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8.5 5.5H20v13H8.5L3 12z"/><path d="m11.5 9.5 5 5M16.5 9.5l-5 5" stroke-linecap="round"/></svg></span></div>
+    <div class="krow"><span class="k sp w">?123</span><span class="k sp">,</span><span class="k sp" style="flex-basis:40px"><i data-i="globe" data-s="18"></i></span><span class="k space"></span><span class="k sp">.</span><span class="k go"><i data-i="search" data-s="22" data-w="2.2"></i></span></div>
+    <div class="nav"></div>
+  </div>
+</div></body></html>

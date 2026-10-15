@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>07 Settings</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  .screen { background: var(--bg-2); }
+  .appbar { position: absolute; top: 36px; left: 0; right: 0; height: 60px; display: flex; align-items: center; gap: 6px; padding: 0 8px; background: var(--bg-2); z-index: 5; }
+  .appbar .b { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+  .appbar h1 { font-size: 22px; font-weight: 700; letter-spacing: -.4px; color: var(--ink); }
+  .content { position: absolute; top: 96px; left: 0; right: 0; bottom: 0; padding: 0 14px; }
+  .sec { font-size: 12px; font-weight: 700; color: #5B3FE6; letter-spacing: .9px; text-transform: uppercase; padding: 12px 12px 6px; }
+  .card { background: #fff; border-radius: 20px; overflow: hidden; }
+  .r { display: flex; align-items: center; gap: 14px; padding: 0 16px; min-height: 54px; position: relative; }
+  .r + .r::before { content: ''; position: absolute; top: 0; left: 52px; right: 0; height: 1px; background: #EFEDF5; }
+  .r .ri { width: 22px; color: var(--ink-2); display: flex; justify-content: center; }
+  .r .rt { flex: 1; font-size: 15px; color: var(--ink); letter-spacing: -.1px; }
+  .r .rt small { display: block; font-size: 12.5px; color: var(--ink-3); margin-top: 1px; }
+  .r .val { font-size: 14px; color: var(--ink-3); display: flex; align-items: center; gap: 2px; }
+  .r .switch { transform: scale(.88); transform-origin: right center; }
+  .seg { display: flex; background: var(--bg-2); border-radius: 12px; padding: 3px; }
+  .seg span { padding: 6px 10px; font-size: 12.5px; font-weight: 600; color: var(--ink-2); border-radius: 9px; }
+  .seg span.on { background: #fff; color: #5B3FE6; box-shadow: 0 1px 3px rgba(23,19,42,.12); }
+  .chips { display: flex; gap: 6px; margin-top: 6px; }
+  .chip { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: #3E2BB0; background: var(--iris-soft); border-radius: 8px; padding: 4px 8px 4px 6px; }
+  .chip.off { color: var(--ink-3); background: var(--bg-2); }
+  .btn-sm { font-size: 13px; font-weight: 600; color: #5B3FE6; border: 1.5px solid #D9D0FF; border-radius: 10px; padding: 6px 10px; display: flex; align-items: center; gap: 5px; }
+  .themes { display: flex; gap: 10px; padding: 12px 16px 14px; }
+  .th { flex: 1; text-align: center; font-size: 12.5px; color: var(--ink-2); font-weight: 500; }
+  .th .sw { height: 54px; border-radius: 14px; margin-bottom: 6px; position: relative; display: flex; align-items: center; justify-content: center; border: 1.5px solid #E7E4F0; }
+  .th.on .sw { box-shadow: 0 0 0 2.5px #fff, 0 0 0 4.5px #7C5CFF; border-color: transparent; }
+  .th.on { color: #5B3FE6; font-weight: 700; }
+  .th .bar { position: absolute; top: 9px; left: 9px; right: 9px; height: 8px; border-radius: 4px; }
+  .th .fld { width: 60%; height: 10px; border-radius: 5px; margin-top: 10px; }
+  .upd { margin-left: auto; text-transform: none; letter-spacing: 0; font-size: 12.5px; font-weight: 500; color: var(--ink-3); display: flex; align-items: center; gap: 10px; }
+  .updb { display: inline-flex; align-items: center; gap: 4px; color: #5B3FE6; font-weight: 700; font-size: 12.5px; }
+</style></head>
+<body><div class="screen">
+  <div class="sb dark"></div>
+  <div class="appbar"><span class="b"><i data-i="back" data-s="24" data-w="2"></i></span><h1>Settings</h1></div>
+
+  <div class="content">
+    <div class="card" style="margin-top:4px">
+      <div class="r" style="min-height:56px"><span class="ri"><i data-i="search" data-s="21"></i></span><span class="rt">Search engine</span><span class="val">DuckDuckGo <i data-i="chevr" data-s="18"></i></span></div>
+    </div>
+
+    <div class="sec">Privacy &amp; security</div>
+    <div class="card">
+      <div class="r" style="min-height:60px"><span class="ri"><i data-i="shieldcheck" data-s="21"></i></span><span class="rt">Ad &amp; tracker blocking<small>Strict can break sites</small></span><span class="seg"><span class="on">Standard</span><span>Strict</span></span></div>
+      <div class="r"><span class="ri"><i data-i="cookie" data-s="21"></i></span><span class="rt">Block third-party cookies</span><span class="switch on"></span></div>
+      <div class="r"><span class="ri"><i data-i="font" data-s="21"></i></span><span class="rt">Block web fonts</span><span class="switch off"></span></div>
+      <div class="r"><span class="ri"><i data-i="https" data-s="21"></i></span><span class="rt">HTTPS-only mode</span><span class="switch on"></span></div>
+      <div class="r"><span class="ri"><i data-i="trash" data-s="21"></i></span><span class="rt">Erase history on exit</span><span class="switch on"></span></div>
+    </div>
+
+    <div class="sec" style="display:flex;align-items:center">Filter lists<span class="upd">Updated 2 h ago<span class="updb"><i data-i="reload" data-s="14" data-w="2.4"></i>Update</span></span></div>
+    <div class="card">
+      <div class="r"><span class="ri"><i data-i="filter" data-s="21"></i></span><span class="rt">EasyList<small>Ads · 74,210 rules</small></span><span class="switch on"></span></div>
+      <div class="r"><span class="ri"><i data-i="eyeoff" data-s="21"></i></span><span class="rt">EasyPrivacy<small>Trackers · 52,830 rules</small></span><span class="switch on"></span></div>
+    </div>
+
+    <div class="sec">Car mode &amp; appearance</div>
+    <div class="card">
+      <div class="r" style="min-height:56px"><span class="ri"><i data-i="car" data-s="22"></i></span><span class="rt">Car mode<small>Shortcuts, read aloud, auto-start on Bluetooth</small></span><i data-i="chevr" data-s="18" style="color:var(--ink-3)"></i></div>
+      <div class="r" style="flex-direction:column;align-items:stretch;padding:0"><div class="themes">
+        <div class="th"><div class="sw" style="background:#fff"><span class="bar" style="background:#ECE9F5"></span><span class="fld" style="background:#E2DEEE"></span></div>Light</div>
+        <div class="th"><div class="sw" style="background:#14111F;border-color:#14111F"><span class="bar" style="background:#2A2440"></span><span class="fld" style="background:#3A3354"></span></div>Dark</div>
+        <div class="th on"><div class="sw" style="background:linear-gradient(150deg,#1A0C45,#3F22C2 60%,#8A45E0)"><span class="bar" style="background:rgba(255,255,255,.18)"></span><span class="fld" style="background:rgba(255,255,255,.9)"></span></div>Gradient</div>
+      </div></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="r"><span class="ri"><span data-logo="22,#5B3FE6,#E2489E"></span></span><span class="rt">About MiniFocus<small>Version 1.0 · Open source · No telemetry</small></span><i data-i="chevr" data-s="18" style="color:var(--ink-3)"></i></div>
+    </div>
+  </div>
+  <div class="nav dark"></div>
+</div></body></html>

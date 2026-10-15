@@ -1,0 +1,110 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>11 Android Auto template (Read aloud)</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  html, body, .screen { width: 1280px; height: 720px; }
+  .screen { background: #000; color: #fff; display: flex; }
+  /* Host rail (generic car launcher, drawn by the car — not by our app) */
+  .rail { width: 112px; background: #0C0C10; display: flex; flex-direction: column; align-items: center; padding: 22px 0 18px; gap: 12px; }
+  .rail .time { font-size: 24px; font-weight: 600; margin-bottom: 10px; }
+  .rail .rb { width: 80px; height: 80px; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: #C9C7D2; }
+  .rail .rb.on { background: #1E1A2E; box-shadow: inset 0 0 0 2px #3A2E66; }
+  .rail .sp { flex: 1; }
+  .rail .mic { background: #1A1A22; border-radius: 40px; }
+  /* Template */
+  .tpl { flex: 1; padding: 22px 34px 0; position: relative; }
+  .hdr { height: 76px; display: flex; align-items: center; gap: 18px; }
+  .appic { width: 56px; height: 56px; border-radius: 16px; background: var(--grad); display: flex; align-items: center; justify-content: center; }
+  .hdr h1 { font-size: 30px; font-weight: 700; letter-spacing: -.4px; }
+  .hdr h1 span { color: #A9A3BE; font-weight: 500; }
+  .drv { margin-left: 8px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 12px; background: #1A1626; color: #CFC9E0; font-size: 16px; font-weight: 600; }
+  .drv .icw { color: #FFB020; }
+  .actions { margin-left: auto; display: flex; gap: 12px; }
+  .act { height: 64px; padding: 0 24px; border-radius: 32px; background: #1C1A24; display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 600; color: #E9E6F1; }
+  .list { margin-top: 10px; }
+  .row { height: 92px; display: flex; align-items: center; gap: 22px; padding: 0 16px; border-radius: 22px; }
+  .row + .row { margin-top: 2px; }
+  .row.cur { background: #16131F; }
+  .th { width: 68px; height: 68px; border-radius: 16px; flex: none; position: relative; overflow: hidden; }
+  .row .tx { flex: 1; min-width: 0; }
+  .row .t { font-size: 23px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -.2px; }
+  .row .s { font-size: 18px; color: #9E98B4; margin-top: 4px; display: flex; align-items: center; gap: 10px; }
+  .row .s .eq { display: inline-flex; gap: 3px; align-items: flex-end; height: 16px; }
+  .row .s .eq i { width: 4px; background: #FF5C8A; border-radius: 2px; display: block; }
+  .pb { width: 72px; height: 72px; border-radius: 36px; background: #1F1C2A; color: #fff; display: flex; align-items: center; justify-content: center; flex: none; }
+  .row.cur .pb { background: #fff; color: #17132A; }
+  .row.cur .t { color: #FF8AB0; }
+  /* Now-playing bar */
+  .np { position: absolute; left: 34px; right: 34px; bottom: 16px; height: 104px; border-radius: 26px; background: linear-gradient(100deg, #24106B, #3A1A9E 55%, #4F3BE0); display: flex; align-items: center; gap: 20px; padding: 0 20px; overflow: hidden; }
+  .np .th { width: 64px; height: 64px; }
+  .np .tx { flex: 1; min-width: 0; }
+  .np .t { font-size: 22px; font-weight: 700; }
+  .np .s { font-size: 17px; color: rgba(255,255,255,.72); margin-top: 3px; }
+  .np .ctl { display: flex; gap: 14px; align-items: center; }
+  .np .ctl > span { width: 72px; height: 72px; border-radius: 36px; display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(255,255,255,.1); }
+  .np .ctl > span.big { width: 80px; height: 80px; border-radius: 40px; background: #fff; color: #3A1A9E; }
+  .np .pr { position: absolute; left: 0; bottom: 0; height: 5px; width: 38%; background: #FF8AB0; }
+  .np .pr::after { content: ''; position: absolute; left: 0; right: -162%; height: 5px; background: rgba(255,255,255,.12); z-index: -1; }
+</style></head>
+<body><div class="screen">
+  <div class="rail">
+    <div class="time">10:24</div>
+    <div class="rb"><i data-i="nav" data-s="34" data-w="1.9"></i></div>
+    <div class="rb on"><span data-logo="40,#FFFFFF,#FF8AB0"></span></div>
+    <div class="rb"><i data-i="phone" data-s="32" data-w="1.9"></i></div>
+    <div class="sp"></div>
+    <div class="rb"><i data-i="grid" data-s="32" data-w="1.9"></i></div>
+    <div class="rb mic"><i data-i="mic" data-s="32" data-w="1.9"></i></div>
+  </div>
+
+  <div class="tpl">
+    <div class="hdr">
+      <span class="appic"><span data-logo="36,#FFFFFF,#FF8AB0"></span></span>
+      <h1>MiniFocus <span>– Read aloud</span></h1>
+      <span class="drv"><i data-i="car" data-s="20" data-w="2"></i>Driving · audio only</span>
+      <div class="actions">
+        <span class="act"><i data-i="sort" data-s="24" data-w="2"></i>Newest</span>
+        <span class="act"><i data-i="queue" data-s="24" data-w="2"></i>Play all</span>
+      </div>
+    </div>
+
+    <div class="list">
+      <div class="row cur">
+        <span class="th" style="background:linear-gradient(180deg,#8FBFE0 0%,#F3D6BC 58%,#4E86A6 60%,#1D4A66 100%)"><svg width="68" height="68" viewBox="0 0 68 68"><path d="M48 41V18" stroke="#fff" stroke-width="1.6"/><path d="M48 18l-1-14M48 18l12 7M48 18l-11 7" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/><path d="M22 41V30M22 30l0-7M22 30l6 3.5M22 30l-6 3.5" stroke="#fff" stroke-width="1.1"/></svg></span>
+        <div class="tx"><div class="t">Offshore wind farm begins powering 400,000 homes</div><div class="s"><span class="eq"><i style="height:8px"></i><i style="height:15px"></i><i style="height:11px"></i></span>Playing · The Northline · 4 min left</div></div>
+        <span class="pb"><i data-i="pause" data-s="30"></i></span>
+      </div>
+      <div class="row">
+        <span class="th" style="background:linear-gradient(135deg,#F2B880,#C0562F)"><svg width="68" height="68" viewBox="0 0 68 68"><rect x="10" y="30" width="48" height="16" rx="5" fill="#FBE3CC"/><circle cx="20" cy="50" r="4" fill="#5A2A16"/><circle cx="48" cy="50" r="4" fill="#5A2A16"/><path d="M6 56h56" stroke="#5A2A16" stroke-width="2"/><path d="M34 30V18" stroke="#FBE3CC" stroke-width="2"/></svg></span>
+        <div class="tx"><div class="t">The quiet comeback of the city tram</div><div class="s">The Northline · 8 min · Saved yesterday</div></div>
+        <span class="pb"><i data-i="play" data-s="28" data-w="0"></i></span>
+      </div>
+      <div class="row">
+        <span class="th" style="background:linear-gradient(160deg,#3B4C7A,#1B2340)"><svg width="68" height="68" viewBox="0 0 68 68"><path d="M16 34a10 10 0 0 1 19-4 8 8 0 1 1 3 15H20a7 7 0 0 1-4-11z" fill="#C9D4F2"/><path d="M24 50l-3 7M34 50l-3 7M44 50l-3 7" stroke="#7FB2FF" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        <div class="tx"><div class="t">Monsoon arrives early across the western coast</div><div class="s">Coastline Weekly · 5 min · Saved 2 days ago</div></div>
+        <span class="pb"><i data-i="play" data-s="28" data-w="0"></i></span>
+      </div>
+      <div class="row">
+        <span class="th" style="background:linear-gradient(150deg,#FFD66B,#F29A2E)"><svg width="68" height="68" viewBox="0 0 68 68"><path d="M10 50l14-22h30L40 50z" fill="#24324F"/><path d="M17 39h30M24 28l-7 22M33 28l-7 22M42 28l-7 22" stroke="#6F8BC4" stroke-width="1.2"/><circle cx="50" cy="16" r="7" fill="#FFF3C4"/></svg></span>
+        <div class="tx"><div class="t">Why rooftop solar prices fell 18% this year</div><div class="s">The Northline · 7 min · Saved 3 days ago</div></div>
+        <span class="pb"><i data-i="play" data-s="28" data-w="0"></i></span>
+      </div>
+      <div class="row">
+        <span class="th" style="background:linear-gradient(160deg,#5BC0A8,#1E6F6A)"><svg width="68" height="68" viewBox="0 0 68 68"><path d="M6 44c8-6 14-6 22 0s14 6 22 0 10-4 12-3" stroke="#E6FFF7" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M6 54c8-6 14-6 22 0s14 6 22 0 10-4 12-3" stroke="#A8EBD9" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="20" r="8" fill="#FFF3C4"/></svg></span>
+        <div class="tx"><div class="t">A beginner’s guide to reading tide tables</div><div class="s">Harbour Notes · 4 min · Saved last week</div></div>
+        <span class="pb"><i data-i="play" data-s="28" data-w="0"></i></span>
+      </div>
+    </div>
+
+    <div class="np">
+      <span class="th" style="background:linear-gradient(180deg,#8FBFE0 0%,#F3D6BC 58%,#4E86A6 60%,#1D4A66 100%)"></span>
+      <div class="tx"><div class="t">Offshore wind farm begins powering…</div><div class="s">Read aloud · 2:31 / 6:05 · 1.0×</div></div>
+      <div class="ctl">
+        <span><i data-i="skipb" data-s="28" data-w="2"></i></span>
+        <span class="big"><i data-i="pause" data-s="34"></i></span>
+        <span><i data-i="skipf" data-s="28" data-w="2"></i></span>
+      </div>
+      <span class="pr"></span>
+    </div>
+  </div>
+</div></body></html>

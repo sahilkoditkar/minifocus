@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>06 Erased</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  iframe { position: absolute; inset: 0; width: 412px; height: 915px; border: 0; }
+  .ripples { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+  .snack .ok { width: 30px; height: 30px; border-radius: 15px; background: rgba(43,217,160,.16); color: var(--mint); display: flex; align-items: center; justify-content: center; }
+  .snack .txt { flex: 1; line-height: 19px; }
+</style></head>
+<body><div class="screen">
+  <iframe src="01-home.html?nohalo"></iframe>
+  <!-- Erase motion, frozen mid-way: a soft wave sweeps out from where the Erase button was -->
+  <svg class="ripples" width="412" height="915" viewBox="0 0 412 915">
+    <defs>
+      <radialGradient id="wave" cx="362" cy="833" r="520" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#FF8AB0" stop-opacity=".28"/>
+        <stop offset=".35" stop-color="#C77DFF" stop-opacity=".12"/>
+        <stop offset=".7" stop-color="#FFFFFF" stop-opacity=".03"/>
+        <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle cx="362" cy="833" r="520" fill="url(#wave)"/>
+    <circle cx="362" cy="833" r="140" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.5"/>
+    <circle cx="362" cy="833" r="270" fill="none" stroke="#fff" stroke-opacity=".13" stroke-width="1.5"/>
+    <circle cx="362" cy="833" r="420" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1.5"/>
+    <circle cx="362" cy="833" r="590" fill="none" stroke="#fff" stroke-opacity=".035" stroke-width="1.5"/>
+    <g fill="#fff">
+      <circle cx="250" cy="700" r="2.2" opacity=".55"/><circle cx="300" cy="640" r="1.5" opacity=".4"/>
+      <circle cx="190" cy="760" r="1.6" opacity=".35"/><circle cx="330" cy="590" r="1.2" opacity=".3"/>
+      <circle cx="120" cy="690" r="1.2" opacity=".25"/><circle cx="230" cy="560" r="1.4" opacity=".22"/>
+      <path d="M276 742l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z" opacity=".7"/>
+      <path d="M160 640l1.2 3.3 3.3 1.2-3.3 1.2-1.2 3.3-1.2-3.3-3.3-1.2 3.3-1.2z" opacity=".45"/>
+    </g>
+  </svg>
+  <div class="snack">
+    <span class="ok"><i data-i="check" data-s="18" data-w="2.6"></i></span>
+    <span class="txt">Your browsing history has been erased</span>
+  </div>
+</div></body></html>

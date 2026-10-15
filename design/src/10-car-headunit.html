@@ -1,0 +1,143 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>10 Car head unit (Android Automotive, parked)</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  html, body, .screen { width: 1920px; height: 720px; }
+  .screen { background: #06040B; color: #F1EEFA; }
+  /* Automotive status bar */
+  .asb { position: absolute; top: 0; left: 0; right: 0; height: 44px; display: flex; align-items: center; padding: 0 32px; font-size: 19px; font-weight: 600; color: #E9E6F1; gap: 22px; }
+  .asb .r { margin-left: auto; display: flex; align-items: center; gap: 22px; color: #CFC9E0; font-weight: 500; }
+  .asb .prof { width: 30px; height: 30px; border-radius: 15px; background: linear-gradient(135deg, #7C5CFF, #E2489E); }
+  /* App */
+  .app { position: absolute; top: 44px; left: 0; right: 0; height: 576px; display: flex; }
+  .rail { width: 136px; display: flex; flex-direction: column; align-items: center; padding: 18px 0 16px; gap: 10px; border-right: 1px solid #1B1626; }
+  .rail .logo { margin-bottom: 14px; }
+  .rb { width: 104px; height: 92px; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-size: 16px; font-weight: 600; color: #A9A3BE; position: relative; }
+  .rb.on { background: #221A3F; color: #fff; }
+  .rb.on .icw { color: #B7A5FF; }
+  .rb .cnt { position: absolute; top: 14px; right: 24px; min-width: 24px; height: 22px; border-radius: 11px; background: #3A2E66; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .rail .spacer { flex: 1; }
+  .main { flex: 1; padding: 18px 28px 0 28px; display: flex; flex-direction: column; min-width: 0; }
+  .top { display: flex; align-items: center; gap: 16px; height: 76px; }
+  .nb { width: 76px; height: 76px; border-radius: 22px; background: #15111F; display: flex; align-items: center; justify-content: center; color: #E9E6F1; flex: none; }
+  .nb.dis { color: #4A4360; }
+  .url { flex: 1; height: 76px; border-radius: 24px; background: #15111F; border: 1.5px solid #2A2340; display: flex; align-items: center; gap: 16px; padding: 0 26px; font-size: 24px; color: #fff; }
+  .url .lk { color: #5EF0BF; }
+  .url .muted { color: #8F88A8; }
+  .shieldchip { height: 76px; border-radius: 22px; background: #1B1430; display: flex; align-items: center; gap: 12px; padding: 0 24px; font-size: 21px; font-weight: 700; color: #fff; flex: none; }
+  .shieldchip .icw { color: #B7A5FF; }
+  .shieldchip small { font-weight: 500; color: #A9A3BE; font-size: 18px; }
+  .erase { height: 76px; border-radius: 38px; background: var(--grad-fab); display: flex; align-items: center; gap: 12px; padding: 0 30px 0 24px; font-size: 22px; font-weight: 700; flex: none;
+           box-shadow: 0 10px 30px -10px rgba(226,72,158,.7); }
+  .banner { margin-top: 14px; height: 56px; border-radius: 18px; background: linear-gradient(90deg, rgba(43,217,160,.16), rgba(43,217,160,.05)); border: 1.5px solid rgba(43,217,160,.35);
+            display: flex; align-items: center; gap: 14px; padding: 0 20px; font-size: 19px; color: #CFF8EA; }
+  .banner b { color: #5EF0BF; font-weight: 700; }
+  .banner .p { width: 34px; height: 34px; border-radius: 9px; background: #2BD9A0; color: #04140E; font-weight: 800; font-size: 21px; display: flex; align-items: center; justify-content: center; }
+  .banner .r { margin-left: auto; color: #8FD9C0; font-size: 17px; display: flex; align-items: center; gap: 8px; }
+  /* Web content (site in dark mode) */
+  .web { margin-top: 14px; flex: 1; border-radius: 24px 24px 0 0; background: #110E1A; border: 1.5px solid #211B30; border-bottom: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .w-head { height: 62px; display: flex; align-items: center; padding: 0 32px; gap: 38px; border-bottom: 1px solid #221C31; flex: none; }
+  .w-logo { font-family: Georgia, serif; font-weight: 700; font-size: 27px; display: flex; align-items: center; gap: 10px; color: #F2EFF8; }
+  .w-logo .mark { width: 30px; height: 30px; border-radius: 7px; background: #2C8C9E; color: #fff; font-size: 19px; display: flex; align-items: center; justify-content: center; }
+  .w-nav { display: flex; gap: 30px; font-size: 18px; color: #A8A2BC; font-weight: 500; }
+  .w-nav .on { color: #6FD3E3; font-weight: 700; }
+  .w-body { display: flex; gap: 32px; padding: 20px 32px; flex: 1; min-height: 0; }
+  .w-hero { width: 500px; height: 260px; border-radius: 16px; overflow: hidden; flex: none; }
+  .w-art { flex: 1; min-width: 0; }
+  .w-art .k { font-size: 15px; font-weight: 700; letter-spacing: 1.4px; color: #FF9A6B; text-transform: uppercase; }
+  .w-art h1 { font-family: Georgia, serif; font-size: 34px; line-height: 41px; margin-top: 8px; color: #F5F3FA; letter-spacing: -.4px; }
+  .w-art p { font-size: 19px; line-height: 28px; color: #B3ADC6; margin-top: 10px; }
+  .w-art .by { font-size: 17px; color: #8F88A8; margin-top: 16px; }
+  .listen { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px; height: 56px; padding: 0 26px 0 12px; border-radius: 30px; background: #fff; color: #17132A; font-size: 19px; font-weight: 700; }
+  .listen .pc { width: 40px; height: 40px; border-radius: 20px; background: #4F3BE0; color: #fff; display: flex; align-items: center; justify-content: center; }
+  .w-side { width: 380px; flex: none; border-left: 1px solid #221C31; padding-left: 28px; }
+  .w-side h3 { font-size: 15px; letter-spacing: 1.3px; text-transform: uppercase; color: #8F88A8; font-weight: 700; }
+  .w-side .it { display: flex; gap: 14px; padding: 15px 0; border-bottom: 1px solid #221C31; }
+  .w-side .it .n { font-family: Georgia, serif; font-size: 26px; color: #4A4360; font-weight: 700; width: 22px; }
+  .w-side .it .t { font-family: Georgia, serif; font-size: 19px; line-height: 26px; color: #E9E6F1; }
+  /* Automotive system bar */
+  .sysbar { position: absolute; left: 0; right: 0; bottom: 0; height: 100px; background: #0B0812; border-top: 1px solid #1B1626; display: flex; align-items: center; padding: 0 40px; }
+  .hvac { display: flex; align-items: center; gap: 22px; font-size: 32px; font-weight: 600; color: #fff; width: 360px; }
+  .hvac .icw { color: #A9A3BE; }
+  .hvac.r { justify-content: flex-end; }
+  .dock { flex: 1; display: flex; justify-content: center; gap: 26px; }
+  .dock span { width: 76px; height: 76px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: #CFC9E0; }
+  .dock span.on { background: #221A3F; color: #fff; }
+</style></head>
+<body><div class="screen">
+  <div class="asb"><span>10:24</span><span style="color:#8F88A8;font-weight:500">Tue 15 Oct</span>
+    <span class="r"><i data-i="bt" data-s="22"></i><i data-i="wifi" data-s="22"></i><span>LTE</span><span>27°C outside</span><span class="prof"></span></span></div>
+
+  <div class="app">
+    <div class="rail">
+      <span class="logo" data-logo="46,#FFFFFF,#FF8AB0"></span>
+      <div class="rb on"><i data-i="home" data-s="32" data-w="2"></i>Home</div>
+      <div class="rb"><i data-i="tabs" data-s="32" data-w="2"></i>Tabs<span class="cnt">2</span></div>
+      <div class="rb"><i data-i="bookmark" data-s="32" data-w="2"></i>Saved</div>
+      <div class="rb"><i data-i="headphones" data-s="32" data-w="2"></i>Listen</div>
+      <div class="spacer"></div>
+      <div class="rb" style="height:76px"><i data-i="gear" data-s="30" data-w="2"></i></div>
+    </div>
+
+    <div class="main">
+      <div class="top">
+        <span class="nb"><i data-i="back" data-s="32" data-w="2.2"></i></span>
+        <span class="nb"><i data-i="reload" data-s="30" data-w="2.2"></i></span>
+        <div class="url"><i class="lk" data-i="lock" data-s="26" data-w="2.2"></i><span><b style="font-weight:600">northline.news</b><span class="muted">/climate/offshore-wind-farm-online</span></span>
+          <span style="margin-left:auto;color:#B7A5FF"><i data-i="mic" data-s="30" data-w="2"></i></span></div>
+        <div class="shieldchip"><i data-i="shieldcheck" data-s="30" data-w="2"></i>23 <small>blocked</small></div>
+        <div class="erase"><i data-i="trash" data-s="28" data-w="2.2"></i>Erase</div>
+      </div>
+
+      <div class="banner"><span class="p">P</span><span><b>Available while parked.</b> Browsing pauses when the car starts moving — Read aloud keeps playing.</span>
+        <span class="r"><i data-i="headphones" data-s="20" data-w="2"></i>Switch to Listen</span></div>
+
+      <div class="web">
+        <div class="w-head"><span class="w-logo"><span class="mark">N</span>The Northline</span>
+          <span class="w-nav"><span>Top</span><span class="on">Climate</span><span>Cities</span><span>Tech</span><span>Business</span><span>Culture</span></span></div>
+        <div class="w-body">
+          <div class="w-hero">
+            <svg width="500" height="260" viewBox="0 0 412 214" preserveAspectRatio="xMidYMid slice" style="filter:brightness(.85)">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FBFE0"/><stop offset=".62" stop-color="#F3D6BC"/><stop offset="1" stop-color="#F7C6A0"/></linearGradient>
+                <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4E86A6"/><stop offset="1" stop-color="#1D4A66"/></linearGradient>
+                <radialGradient id="sun" cx="0.72" cy="0.62" r="0.35"><stop offset="0" stop-color="#FFF4DE"/><stop offset="1" stop-color="#FFF4DE" stop-opacity="0"/></radialGradient>
+                <g id="t"><path d="M-1.4 0 L-.7 -64 L.7 -64 L1.4 0Z" fill="#F8FAFC"/><g transform="translate(0,-64)"><path d="M0 0 L-2 -2 L-1 -34 L1 -36 L2 -2Z" fill="#fff"/><path d="M0 0 L-2 -2 L-1 -34 L1 -36 L2 -2Z" fill="#EEF2F6" transform="rotate(120)"/><path d="M0 0 L-2 -2 L-1 -34 L1 -36 L2 -2Z" fill="#E2E8EE" transform="rotate(240)"/><circle r="2.4" fill="#fff"/></g></g>
+              </defs>
+              <rect width="412" height="214" fill="url(#sky)"/><rect width="412" height="214" fill="url(#sun)"/>
+              <rect y="140" width="412" height="74" fill="url(#sea)"/>
+              <path d="M250 150h70M232 158h110M262 166h50M210 176h150" stroke="#F8D8BC" stroke-width="1.6" opacity=".45" stroke-linecap="round"/>
+              <use href="#t" transform="translate(40 141) scale(.55)"/><use href="#t" transform="translate(92 141) scale(.48)"/><use href="#t" transform="translate(138 141) scale(.42)"/><use href="#t" transform="translate(178 141) scale(.36)"/><use href="#t" transform="translate(212 141) scale(.31)"/><use href="#t" transform="translate(242 141) scale(.27)"/><use href="#t" transform="translate(268 141) scale(.23)"/>
+              <use href="#t" transform="translate(340 142) scale(1.15)"/>
+              <path d="M0 214 L0 196 Q60 186 120 194 T260 200 T412 192 L412 214Z" fill="#163A52" opacity=".55"/>
+            </svg>
+          </div>
+          <div class="w-art">
+            <div class="k">Climate · Energy</div>
+            <h1>Offshore wind farm begins powering 400,000 homes along the coast</h1>
+            <p>The 62-turbine array came online three months ahead of schedule, and engineers say a second phase is already in planning.</p>
+            <div class="listen"><span class="pc"><i data-i="play" data-s="20" data-w="0"></i></span>Listen · 6 min</div>
+          </div>
+          <div class="w-side">
+            <h3>More in Climate</h3>
+            <div class="it"><span class="n">1</span><span class="t">The quiet comeback of the city tram</span></div>
+            <div class="it"><span class="n">2</span><span class="t">Monsoon arrives early across the western coast</span></div>
+            <div class="it" style="border:0"><span class="n">3</span><span class="t">Why rooftop solar prices fell 18% this year</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sysbar">
+    <div class="hvac"><i data-i="fan" data-s="34" data-w="1.8"></i>21.5°<i data-i="seat" data-s="32" data-w="1.8"></i></div>
+    <div class="dock">
+      <span><i data-i="grid" data-s="34" data-w="1.8"></i></span>
+      <span><i data-i="nav" data-s="34" data-w="1.8"></i></span>
+      <span><i data-i="music" data-s="34" data-w="1.8"></i></span>
+      <span class="on"><span data-logo="40,#FFFFFF,#FF8AB0" style="width:auto;height:auto;background:none"></span></span>
+      <span><i data-i="phone" data-s="32" data-w="1.8"></i></span>
+    </div>
+    <div class="hvac r"><i data-i="seat" data-s="32" data-w="1.8"></i>21.5°<i data-i="fan" data-s="34" data-w="1.8"></i></div>
+  </div>
+</div></body></html>

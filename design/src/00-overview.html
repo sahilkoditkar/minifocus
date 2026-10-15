@@ -1,0 +1,63 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>00 MiniFocus overview</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  html, body { width: 2000px; height: 1600px; }
+  body { background: radial-gradient(60% 50% at 100% 0%, rgba(124,92,255,.14), rgba(124,92,255,0) 70%),
+                     radial-gradient(50% 40% at 0% 100%, rgba(226,72,158,.08), rgba(226,72,158,0) 70%), #F4F2F9; color: var(--ink); }
+  .board { padding: 56px 88px 0; }
+  header { display: flex; align-items: center; gap: 22px; }
+  .lm { width: 76px; height: 76px; border-radius: 22px; background: var(--grad); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 30px -12px rgba(63,34,194,.6); }
+  header h1 { font-size: 44px; font-weight: 800; letter-spacing: -1.4px; line-height: 48px; }
+  header p { font-size: 19px; color: var(--ink-2); margin-top: 4px; }
+  header .meta { margin-left: auto; display: flex; align-items: center; gap: 26px; }
+  .sw { display: flex; gap: 10px; }
+  .sw span { width: 40px; height: 40px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .tag { font-size: 15px; font-weight: 600; color: #5B3FE6; background: #E9E3FF; padding: 9px 16px; border-radius: 12px; }
+
+  .row1 { display: flex; justify-content: space-between; margin-top: 52px; }
+  .item { width: 320px; }
+  .phone { width: 320px; height: 692px; border-radius: 48px; background: #121016; padding: 10px; box-shadow: 0 40px 60px -30px rgba(30, 10, 80, .45), 0 0 0 1.5px #2A2633 inset; position: relative; }
+  .phone img { width: 300px; height: 667px; display: block; border-radius: 39px; }
+  .cap { margin-top: 22px; padding: 0 6px; }
+  .cap .n { font-size: 14px; font-weight: 700; color: #5B3FE6; letter-spacing: 1px; }
+  .cap h3 { font-size: 20px; font-weight: 700; letter-spacing: -.3px; margin-top: 3px; }
+  .cap p { font-size: 15px; line-height: 22px; color: var(--ink-2); margin-top: 5px; }
+
+  .row2 { display: flex; gap: 56px; margin-top: 48px; align-items: flex-start; }
+  .land { width: 752px; height: 348px; margin-top: 25px; border-radius: 46px; background: #121016; padding: 10px; box-shadow: 0 40px 60px -30px rgba(30,10,80,.45); }
+  .land img { width: 732px; height: 328px; border-radius: 37px; display: block; }
+  .hu { width: 1016px; border-radius: 22px; background: #121016; padding: 10px; box-shadow: 0 40px 60px -30px rgba(30,10,80,.45); }
+  .hu img { width: 996px; height: 373.5px; border-radius: 13px; display: block; }
+  .row2 .cap { max-width: 740px; }
+</style></head>
+<body><div class="board">
+  <header>
+    <span class="lm"><span data-logo="50,#FFFFFF,#FF8AB0"></span></span>
+    <div><h1>MiniFocus</h1><p>A minimal, privacy-first Android browser · Design v1 — key screens</p></div>
+    <div class="meta">
+      <div class="sw"><span style="background:#140A33"></span><span style="background:#3A1A9E"></span><span style="background:#4F3BE0"></span><span style="background:#7C5CFF"></span><span style="background:#E2489E"></span><span style="background:#FF5C8A"></span><span style="background:#2BD9A0"></span></div>
+      <span class="tag">Inter · 412 × 915 dp</span>
+    </div>
+  </header>
+
+  <div class="row1">
+    <div class="item"><div class="phone"><img src="../mockups/01-home.png"></div>
+      <div class="cap"><div class="n">01</div><h3>Home</h3><p>Full-bleed gradient, one big search field. Nothing else to look at.</p></div></div>
+    <div class="item"><div class="phone"><img src="../mockups/03-browsing.png"></div>
+      <div class="cap"><div class="n">03</div><h3>Browsing</h3><p>Slim bar: lock, domain, shield with blocked count, menu. Erase button floats bottom-right.</p></div></div>
+    <div class="item"><div class="phone"><img src="../mockups/04-shield-panel.png"></div>
+      <div class="cap"><div class="n">04</div><h3>Shield sheet</h3><p>Tap the shield: what was blocked, by category, plus per-site switches.</p></div></div>
+    <div class="item"><div class="phone"><img src="../mockups/06-erased.png"></div>
+      <div class="cap"><div class="n">06</div><h3>Erased</h3><p>One tap wipes the session. A soft wave sweeps from the button, then the confirmation toast.</p></div></div>
+    <div class="item"><div class="phone"><img src="../mockups/07-settings.png"></div>
+      <div class="cap"><div class="n">07</div><h3>Settings</h3><p>Blocking level, cookies, fonts, HTTPS-only, erase on exit, filter lists, theme.</p></div></div>
+  </div>
+
+  <div class="row2">
+    <div><div class="land"><img src="../mockups/09-car-mode-phone.png"></div>
+      <div class="cap"><div class="n">09</div><h3>Car mode (phone on the dash)</h3><p>High-contrast dark, a huge voice button and big shortcut tiles (all ≥ 76 dp). Browsing only while parked; Read aloud works while driving.</p></div></div>
+    <div><div class="hu"><img src="../mockups/10-car-headunit.png"></div>
+      <div class="cap"><div class="n">10 · 11</div><h3>Car head unit &amp; Android Auto</h3><p>Android Automotive: full browser while parked, with a clear banner. Android Auto: a Read-aloud media list instead, since browsing isn’t allowed there.</p></div></div>
+  </div>
+</div></body></html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>01 Home</title>
+<link rel="stylesheet" href="mf.css"><script src="icons.js"></script>
+<style>
+  .center { position: absolute; left: 24px; right: 24px; top: 372px; }
+  .halo { position: absolute; left: 50%; top: 400px; width: 620px; height: 620px; margin-left: -310px; margin-top: -310px; border-radius: 50%;
+          border: 1px solid rgba(255,255,255,.05); box-shadow: 0 0 0 90px rgba(255,255,255,.012), 0 0 0 180px rgba(255,255,255,.01); }
+  .tagline { color: #fff; font-size: 26px; font-weight: 700; letter-spacing: -.6px; text-align: center; line-height: 32px; margin-bottom: 26px; }
+  .tagline span { color: rgba(255,255,255,.55); font-weight: 500; }
+</style></head>
+<body><div class="screen gradient">
+  <div class="sb"></div>
+  <div class="halo"></div>
+  <script>if (location.search.includes("nohalo")) document.querySelector(".halo").remove();</script>
+
+  <div class="home-top">
+    <div class="wordmark"><span data-logo="26,#FFFFFF,#FF8AB0"></span>MiniFocus</div>
+    <div class="home-more"><i data-i="more" data-s="22"></i></div>
+  </div>
+
+  <div class="center">
+    <div class="urlfield">
+      <i data-i="search" data-s="22" style="color:#7C5CFF"></i>
+      <span class="ph">Search or enter address</span>
+    </div>
+    <p class="hint" style="margin-top:22px">Ads &amp; trackers blocked automatically.<br>Tap <b style="color:rgba(255,255,255,.85);font-weight:600">Erase</b> and it’s like you were never here.</p>
+  </div>
+
+  <div class="nav"></div>
+</div></body></html>
